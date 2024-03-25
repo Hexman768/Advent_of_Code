@@ -1,8 +1,8 @@
-def main(fn):
-    floor = 0
+def main(fn: str) -> None:
+    floor: int = 0
     with open(fn) as file:
         while 1:
-            char = file.read(1)
+            char: str = file.read(1)
             if not char:
                 break
             print(char)

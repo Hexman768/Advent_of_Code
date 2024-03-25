@@ -61,4 +61,5 @@ def day3_1(fn: str) -> None:
 def main(fn: str) -> None:
     day3_1(fn)
     day3_2(fn)
+
 main('input.txt')
