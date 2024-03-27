@@ -17,26 +17,19 @@ def contains_vowel(l: str) -> bool:
     _c: int = 0
     _v_lst: list[str] = ['a', 'e', 'i', 'o', 'u']
     for i in range(len(l)):
-        if _v_lst.__contains__(l[i]):
-            _c += 1
+        if _v_lst.__contains__(l[i]): _c += 1
     return True if _c >= 3 else False
 
 def main() -> None:
     _c_value: int = 0
-    _b_str_lst: list[str] = ['ab', 'cd', 'pq', 'xy']
     if len(sys.argv) < 2:
         print("ERROR -> MISSING INPUT ARGUMENT!")
         return
     _fn: str = sys.argv[1]
     with open(_fn) as _file:
         for line in _file.readlines():
-            if contains_banned_strs(line):
-                print('Contains banned strings')
             if contains_vowel(line) and repeat_letter(line) and not contains_banned_strs(line):
-                print(line, ': nice string')
                 _c_value += 1
-            else:
-                print(line, ': naughty string')
         _file.close()
     print('There are', _c_value, 'nice strings')
 
