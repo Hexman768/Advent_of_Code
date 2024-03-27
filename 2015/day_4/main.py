@@ -15,7 +15,7 @@ def generate_md5(msg: str, zrs: int) -> str:
         _c_value += 1
         msg = _msg_cpy + str(_c_value)
         _md5 = hashlib.md5(msg.encode('utf-8')).hexdigest()
-    print('The integer required is:', _c_value)
+    print(f'The integer required is: {_c_value}')
     return _md5
 
 
@@ -24,7 +24,7 @@ def main() -> None:
         print('ERROR - MISSING COMMAND LINE ARGUMENT: Input msg key for MD5 encyrption')
         return
     _msg: str = sys.argv[1]
-    print('Part 1:', generate_md5(_msg, 5))
-    print('Part 2:', generate_md5(_msg, 6))
+    print(f'Part 1: {generate_md5(_msg, 5)}')
+    print(f'Part 2: {generate_md5(_msg, 6)}')
 
 main()
