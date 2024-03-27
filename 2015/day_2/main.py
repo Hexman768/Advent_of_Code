@@ -6,7 +6,7 @@ def day2_2(lines: list[str]) -> None:
         ribbon: int = 2 * min(l+w, w+h, h+l)
         ribbon += l*w*h
         total += ribbon
-    print('Total ribbon required: ', total)
+    print(f'Total ribbon required: {total}')
 
 def surface_area(l: int, w: int, h: int) -> int:
     area: int = 2*l*w + 2*w*h + 2*h*l
@@ -20,7 +20,7 @@ def day2_1(lines: list[str]) -> None:
         l, w, h = int(l), int(w), int(h)
         area: int = surface_area(l,w,h)
         total += area
-    print('Total area is: ', total)
+    print(f'Total area is: {total}')
 
 def main(fn: str) -> None:
     with open(fn, encoding='utf-8') as _file:

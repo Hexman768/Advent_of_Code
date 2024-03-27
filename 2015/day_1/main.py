@@ -10,6 +10,7 @@ def main(fn: str) -> None:
                 floor += 1
             elif char == ')':
                 floor -= 1
-        print("Santa is on floor: " + str(floor))
+        print(f'Santa is on floor: {floor}')
 
-main("input.txt")
+main('input.txt')
+
