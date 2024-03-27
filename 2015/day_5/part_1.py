@@ -3,7 +3,7 @@ import sys
 def contains_banned_strs(l: str) -> bool:
     _b_str_lst = ['ab', 'cd', 'pq', 'xy']
     for i in range(len(l) - 1):
-        if _b_str_lst.__contains__(l[i] + l[i + 1]): return True
+        if l[i] + l[i + 1] in _b_str_lst: return True
     return False
 
 def repeat_letter(l: str) -> bool:
@@ -15,9 +15,8 @@ def repeat_letter(l: str) -> bool:
 
 def contains_vowel(l: str) -> bool:
     _c: int = 0
-    _v_lst: list[str] = ['a', 'e', 'i', 'o', 'u']
     for i in range(len(l)):
-        if _v_lst.__contains__(l[i]): _c += 1
+        if l[i] in 'aeiou': _c += 1
     return True if _c >= 3 else False
 
 def main() -> None:
