@@ -31,6 +31,6 @@ def main() -> None:
             if contains_vowel(line) and repeat_letter(line) and not contains_banned_strs(line):
                 _c_value += 1
         _file.close()
-    print('There are', _c_value, 'nice strings')
+    print(f'There are {_c_value} nice strings')
 
 main()
