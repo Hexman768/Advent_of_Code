@@ -1,6 +1,6 @@
 def day2_2(fn: str) -> None:
     total: int = 0
-    for line in open(fn):
+    for line in open(fn, encoding='utf-8'):
         l, w, h = line.split('x')
         l, w, h = int(l), int(w), int(h)
         ribbon: int = 2 * min(l+w, w+h, h+l)
@@ -15,7 +15,7 @@ def surface_area(l: int, w: int, h: int) -> int:
 
 def day2_1(fn: str) -> None:
     total: int = 0
-    for line in open(fn):
+    for line in open(fn, encoding='utf-8'):
         l, w, h = line.split('x')
         l, w, h = int(l), int(w), int(h)
         area: int = surface_area(l,w,h)
