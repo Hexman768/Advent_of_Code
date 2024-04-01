@@ -6,7 +6,7 @@ def part_1(lines: list[str]) -> None:
         _n_str: str = ''
         #print(line)
         for i in range(len(line)):
-            if line[i] in '0123456789':
+            if line[i].isdigit():
                 _n_str += line[i]
         #print(_n_str)
         _n_str = _n_str[0] + _n_str[len(_n_str) - 1]
@@ -35,8 +35,8 @@ def main() -> None:
     _file = open(sys.argv[1])
     _lines: list[str] = _file.readlines()
     _file.close()
-    #part_1(_lines)
-    part_2(_lines)
+    part_1(_lines)
+    #part_2(_lines)
     return
 
 main()
