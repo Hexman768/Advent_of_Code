@@ -1,6 +1,6 @@
 def main(fn: str) -> None:
     floor: int = 0
-    with open(fn) as file:
+    with open(fn, encoding='utf-8') as file:
         while 1:
             char: str = file.read(1)
             if not char:
@@ -13,4 +13,3 @@ def main(fn: str) -> None:
         print("Santa is on floor: " + str(floor))
 
 main("input.txt")
-

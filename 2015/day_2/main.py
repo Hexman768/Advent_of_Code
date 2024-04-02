@@ -1,6 +1,6 @@
-def day2_2(fn: str) -> None:
+def day2_2(lines: list[str]) -> None:
     total: int = 0
-    for line in open(fn):
+    for line in lines:
         l, w, h = line.split('x')
         l, w, h = int(l), int(w), int(h)
         ribbon: int = 2 * min(l+w, w+h, h+l)
@@ -13,9 +13,9 @@ def surface_area(l: int, w: int, h: int) -> int:
     slack: int = min(l*w, w*h, h*l)
     return area + slack
 
-def day2_1(fn: str) -> None:
+def day2_1(lines: list[str]) -> None:
     total: int = 0
-    for line in open(fn):
+    for line in lines:
         l, w, h = line.split('x')
         l, w, h = int(l), int(w), int(h)
         area: int = surface_area(l,w,h)
@@ -23,7 +23,10 @@ def day2_1(fn: str) -> None:
     print('Total area is: ', total)
 
 def main(fn: str) -> None:
-    day2_1(fn)
-    day2_2(fn)
+    with open(fn, encoding='utf-8') as _file:
+        for _lines in _file.readlines():
+            day2_1(_lines)
+            day2_2(_lines)
+        _file.close()
 
 main('input.txt')
