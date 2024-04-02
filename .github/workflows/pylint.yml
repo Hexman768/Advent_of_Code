@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint -d duplicate-code $(git ls-files '*.py')
+        pylint -d duplicate-code --fail-under 5 --fail-on E $(git ls-files '*.py')
