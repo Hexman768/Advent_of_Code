@@ -27,17 +27,16 @@ def part_2(lines: list[str]) -> None:
             line = line.replace(k, _num_vect.get(k))
         _n_line_lst.append(line)
     part_1(_n_line_lst)
-    return
 
 def main() -> None:
     if len(sys.argv) < 2:
         print('ERROR: MISSING INPUT FILE ARGUMENT!')
         return
-    _file = open(sys.argv[1], encoding='utf-8')
-    _lines: list[str] = _file.readlines()
+    with open(sys.argv[1], encoding='utf-8') as _file:
+        _lines: list[str] = _file.readlines()
+        part_1(_lines)
+        part_2(_lines)
     _file.close()
-    part_1(_lines)
-    part_2(_lines)
     return
 
 main()
