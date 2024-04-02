@@ -1,5 +1,3 @@
-# pylint: disable=duplicate-code
-
 def day2_2(lines: list[str]) -> None:
     total: int = 0
     for line in lines:

@@ -37,6 +37,5 @@ def main() -> None:
         part_1(_lines)
         part_2(_lines)
     _file.close()
-    return
 
 main()
