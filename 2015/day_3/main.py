@@ -30,7 +30,7 @@ def day3_2(fn: str) -> None:
                 houses.append(s_coords[:])
             if not check_houses(houses, rbs_coords):
                 houses.append(rbs_coords[:])
-        print('Santa and Robo-Santa delivered presents to', len(houses), 'houses')
+        print(f'Santa and Robo-Santa delivered presents to {len(houses)} houses')
 
 def check_houses(h: list[list[int]], c: list[int]) -> bool:
     for house in h:
@@ -56,7 +56,7 @@ def day3_1(fn: str) -> None:
                 coords[1] += 1
             if not check_houses(houses, coords):
                 houses.append(coords[:])
-        print('Santa delivered presents to', len(houses), 'houses')
+        print(f'Santa delivered presents to {len(houses)} houses')
 
 def main(fn: str) -> None:
     day3_1(fn)
