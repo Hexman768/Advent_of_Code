@@ -13,4 +13,3 @@ def main(fn: str) -> None:
         print(f'Santa is on floor: {floor}')
 
 main('input.txt')
-
