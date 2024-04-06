@@ -1,48 +1,33 @@
-import re
-import ast
-import sys
+from sys import argv
+from re import findall
+from typing import Any
 
 def execute(lines: str, bright: bool) -> None:
-    _inst: str = ''
     _count: int = 0
-    _min_xy: tuple[int] = []
-    _max_xy: tuple[int] = []
-    _coords: list[str] = []
     _lights: list[int] = [[0 for i in range(1000)] for j in range(1000)]
+    _actions: dict[str, Any] = {
+        'turn on': lambda x: x + 1 if bright else 1,
+        'turn off': lambda x: x - 1 if x > 0  and bright else 0,
+        'toggle': lambda x: x + 2 if bright else 1 if x == 0 else 0
+    }
     for _line in lines:
-        if 'on' in _line:
-            _inst = 'on'
-        elif 'off' in _line:
-            _inst = 'off'
-        else:
-            _inst = 'toggle'
-        _coords = re.findall(r'(\d+[,]\d+)', _line)
-        _min_xy = ast.literal_eval(_coords[0])
-        _max_xy = ast.literal_eval(_coords[1])
-        for y in range(_min_xy[1], _max_xy[1] + 1):
-            for x in range(_min_xy[0], _max_xy[0] + 1):
-                if _inst == 'on' and not bright:
-                    _lights[y][x] = 1
-                elif _inst == 'on' and bright:
-                    _lights[y][x] += 1
-                elif _inst == 'off' and not bright:
-                    _lights[y][x] = 0
-                elif _inst == 'off' and bright and _lights[y][x] > 0:
-                    _lights[y][x] -= 1
-                elif _inst == 'toggle' and not bright:
-                    _lights[y][x] = 1 if _lights[y][x] == 0 else 0
-                elif _inst == 'toggle' and bright:
-                    _lights[y][x] += 2
+        _instructions = findall(r'(turn on|turn off|toggle)\s(\d+),(\d+)\sthrough\s(\d+),(\d+)',
+                                _line)
+        for action,x1,y1,x2,y2 in _instructions:
+            _coords = [(x,y) for x in range(int(x1), int(x2) + 1)
+                       for y in range(int(y1), int(y2) + 1)]
+            for (x,y) in _coords:
+                _lights[y][x] = _actions[action](_lights[y][x])
     for i in range(1000):
         for j in range(1000):
             _count += _lights[i][j]
     print(f'The total count is: {_count}')
 
 def main() -> None:
-    if len(sys.argv) < 2:
+    if len(argv) < 2:
         print('[ERROR] Usage: py main.py <input file path>')
         return
-    with open(sys.argv[1], encoding='utf-8') as _file:
+    with open(argv[1], encoding='utf-8') as _file:
         _lines: str = _file.readlines()
         execute(_lines, False)
         execute(_lines, True)
