@@ -1,7 +1,5 @@
 123 -> x
 456 -> y
-NOT ad -> ab
-NOT ab -> ac
 x AND y -> d
 x OR y -> e
 x LSHIFT 2 -> f
