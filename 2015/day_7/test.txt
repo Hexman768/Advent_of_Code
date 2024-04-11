@@ -1,6 +1,6 @@
 123 -> x
 456 -> y
-NOT x -> ab
+NOT ad -> ab
 NOT ab -> ac
 x AND y -> d
 x OR y -> e
