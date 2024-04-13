@@ -33,5 +33,8 @@ with open(sys.argv[1], encoding='utf-8') as _file:
     for line in lines:
         inst, key = line.split('->')
         wires[key.strip()] = inst.strip()
-    print(get_signal('a'))
+    result: int = get_signal('a')
+    print(result)
+    wires['b'] = str(result)
+    get_signal.cache_clear()
     _file.close()
